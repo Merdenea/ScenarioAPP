@@ -8,7 +8,7 @@ const session = require('express-session');
 const passport = require('passport');
 const config = require('./config/database');
 
-mongoose.connect('mongodb://dbcos:b7Qx6AA01oOSTJ9EpJV4X5KYjpVhzSoQHENV0qegqE5k8Mbpr18pQznex9YCBaOkCSvyfTivBYKPDGk1CFvyag==@dbcos.documents.azure.com:10255/test/?ssl=true&replicaSet=globaldb');
+mongoose.connect('mongodb://dbcos:b7Qx6AA01oOSTJ9EpJV4X5KYjpVhzSoQHENV0qegqE5k8Mbpr18pQznex9YCBaOkCSvyfTivBYKPDGk1CFvyag==@dbcos.documents.azure.com:10255/scenario/?ssl=true&replicaSet=globaldb');
 let db = mongoose.connection;
 
 // Check connection
@@ -25,7 +25,7 @@ db.on('error', function(err){
 const app = express();
 
 // Bring in Models
-let Article = require('./models/article');
+let Data = require('./models/data');
 
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'));
@@ -85,22 +85,22 @@ app.get('*', function(req, res, next){
 
 // Home Route
 app.get('/', function(req, res){
-  Article.find({}, function(err, articles){
+  Data.find({}, function(err, datas){
     if(err){
       console.log(err);
     } else {
       res.render('index', {
-        title:'Articles',
-        articles: articles
+        title:'Data',
+        datas: datas
       });
     }
   });
 });
 
 // Route Files
-let articles = require('./routes/articles');
+let datas = require('./routes/datas');
 let users = require('./routes/users');
-app.use('/articles', articles);
+app.use('/datas', datas);
 app.use('/users', users);
 
 // Start Server
