@@ -8,7 +8,7 @@ let User = require('../models/user');
 
 // Add Route
 router.get('/add', ensureAuthenticated, function(req, res){
-  res.render('add_datas', { //  !!!!!!
+  res.render('add_data', { 
     title:'Add Data'
   });
 });
@@ -48,13 +48,13 @@ router.post('/add', function(req, res){
 // Load Edit Form
 router.get('/edit/:id', ensureAuthenticated, function(req, res){
   Data.findById(req.params.id, function(err, data){
-    if(data.author != req.user._id){
+ /*   if(data.author != req.user._id){
       req.flash('danger', 'Not Authorized');
       res.redirect('/');
-    }
+    }*/
     res.render('edit_data', {
       title:'Edit Data',
-      data:data
+      data: data
     });
   });
 });
@@ -65,7 +65,7 @@ router.post('/edit/:id', function(req, res){
   data.title = req.body.title;
   data.author = req.body.author;
   data.body = req.body.body;
-
+  console.log(data);
   let query = {_id:req.params.id}
 
   Data.update(query, data, function(err){
@@ -88,9 +88,11 @@ router.delete('/:id', function(req, res){
   let query = {_id:req.params.id}
 
   Data.findById(req.params.id, function(err, data){
-    if(data.author != req.user._id){
+   if(data.author == req.user._id){
+
       res.status(500).send();
-    } else {
+    } else
+     {
       Data.remove(query, function(err){
         if(err){
           console.log(err);
@@ -106,8 +108,7 @@ router.get('/:id', function(req, res){
   Data.findById(req.params.id, function(err, data){
     User.findById(data.author, function(err, user){
       res.render('data', {
-        data:data,
-        author: user.name
+        data:data
       });
     });
   });

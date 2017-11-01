@@ -2,11 +2,13 @@ const mongoose = require('mongoose');
 
 // Data Scheme
 const DataSchema = mongoose.Schema({
-  user:{
-    //use email
+  author:{
     type: String
   },
-  text:{
+  title:{
+    type: String
+  },
+  body:{
       type: String
   }  
 });

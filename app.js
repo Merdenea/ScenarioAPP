@@ -85,22 +85,22 @@ app.get('*', function(req, res, next){
 
 // Home Route
 app.get('/', function(req, res){
-  Data.find({}, function(err, datas){
+  Data.find({}, function(err, datares){
     if(err){
       console.log(err);
     } else {
       res.render('index', {
         title:'Data',
-        datas: datas
+        datares: datares
       });
     }
   });
 });
 
 // Route Files
-let datas = require('./routes/datas');
+let data = require('./routes/data');
 let users = require('./routes/users');
-app.use('/datas', datas);
+app.use('/data', data);
 app.use('/users', users);
 
 // Start Server

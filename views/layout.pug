@@ -1,7 +1,7 @@
-dadoctype html
+doctype html
 html
   head
-    title Knowledgebase
+    title ScenarioAPP
     link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
     link(rel='stylesheet' href='/css/style.css')
   body
@@ -13,14 +13,13 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='/') KnowledgeBase
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li
               a(href='/') Home
             if user
               li
-                a(href='/data/add') Add Article
+                a(href='/data/add') Add Data
           ul.nav.navbar-nav.navbar-right
             if user
               li 
@@ -38,8 +37,6 @@ html
       block content
       br
       hr
-      footer
-        p Copyright &copy; 2017
     script(src='/bower_components/jquery/dist/jquery.js')  
     script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
     script(src='/js/main.js')  
