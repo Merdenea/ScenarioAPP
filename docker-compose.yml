@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  logger-service:
+    image: "carlocamurri/loggerapp:${APP_VERSION}"
+    ports:
+      - "80:3000"
+    deploy:
+      replicas: 6
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      update_config:
+        parallelism: 1
+        delay: 10s
+        order: stop-first
+
