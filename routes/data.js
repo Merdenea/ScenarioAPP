@@ -97,6 +97,34 @@ router.delete('/:id', function(req, res){
   });
 });
 
+
+//Search logs
+
+router.post('/search', function(req,res){
+
+  req.checkBody('search','Search term is required').notEmpty();
+
+  // Get Errors
+  let errors = req.validationErrors();
+
+  if(errors){
+    res.render('add_data', {
+      title:'New Log',
+      errors:errors
+    });
+  }
+  else{
+    let query = {title:req.body.search};
+    Data.find(query, function(err, results){
+      res.render('index', {
+        title: 'Search Results',
+        datares: results
+      })
+    });
+  }
+});
+
+
 // Get Single Data
 router.get('/:id', function(req, res){
   Data.findById(req.params.id, function(err, data){
