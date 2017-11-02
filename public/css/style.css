@@ -11,13 +11,18 @@
 }
 
 form {
-  width: 400px;
-  height: 450px;
+  width: 40%;
+  height: auto;
+  margin: auto;
+  position: center;
+}
+
+ul {
+   width: 40%;
+  height: auto;
   margin: auto;
   position: relative;
 }
-
-
 h1 {
   text-align: center;
 }
