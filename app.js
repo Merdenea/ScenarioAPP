@@ -68,7 +68,7 @@ app.use(expressValidator({
       param : formParam,
       msg   : msg,
       value : value
-    };
+    }
   }
 }));
 
