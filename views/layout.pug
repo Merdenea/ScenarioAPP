@@ -19,7 +19,7 @@ html
               a(href='/') Home
             if user
               li
-                a(href='/data/add') Add Data
+                a(href='/data/add') Add Log
           ul.nav.navbar-nav.navbar-right
             if user
               li 
@@ -36,7 +36,6 @@ html
           div(class="alert alert-danger") #{error.msg}
       block content
       br
-      hr
     script(src='/bower_components/jquery/dist/jquery.js')  
     script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
     script(src='/js/main.js')  

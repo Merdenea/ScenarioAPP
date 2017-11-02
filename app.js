@@ -90,7 +90,7 @@ app.get('/', function(req, res){
       console.log(err);
     } else {
       res.render('index', {
-        title:'Data',
+        title:'Logs',
         datares: datares
       });
     }
