@@ -13,6 +13,25 @@ router.get('/add', ensureAuthenticated, function(req, res){
   });
 });
 
+//format date and time
+function formatDate(date) {
+  let monthNames = [
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
+  ];
+
+  let day = date.getDate();
+  let monthIndex = date.getMonth();
+  let year = date.getFullYear();
+  let hh = date.getHours();
+  let mm = date.getMinutes();
+
+  return hh + ':' + mm + ', ' + day + ' ' + monthNames[monthIndex] + ' ' + year;
+}
+
+
 // Add Submit POST Route
 router.post('/add', function(req, res){
   req.checkBody('title','Title is required').notEmpty();
@@ -31,6 +50,7 @@ router.post('/add', function(req, res){
     let data = new Data();
     data.title = req.body.title;
     data.author = req.user._id;
+    data.date = formatDate(new Date());
     data.body = req.body.body;
 
     data.save(function(err){
@@ -63,7 +83,8 @@ router.get('/edit/:id', ensureAuthenticated, function(req, res){
 router.post('/edit/:id', function(req, res){
   let data = {};
   data.title = req.body.title;
-  data.author = req.body.author;
+  data.author = req.user._id;
+  data.date = formatDate(new Date());
   data.body = req.body.body;
   console.log(data);
   let query = {_id:req.params.id}

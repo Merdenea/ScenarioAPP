@@ -10,6 +10,9 @@ const DataSchema = mongoose.Schema({
   },
   body:{
       type: String
-  }  
+  },
+  date:{
+    type: String
+  }
 });
 const Data = module.exports = mongoose.model('Data', DataSchema);
