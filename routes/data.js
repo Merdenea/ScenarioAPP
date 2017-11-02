@@ -114,8 +114,9 @@ router.post('/search', function(req,res){
     });
   }
   else{
-    let query = {title:req.body.search};
-    Data.find(query, function(err, results){
+    let query = {title: { $regex: '.*' + req.body.search + '.*', $options: 'i' }};
+    let caseSensitivity = {$caseSensitive: false};
+    Data.find(query, caseSensitivity,function(err, results){
       res.render('index', {
         title: 'Search Results',
         datares: results
