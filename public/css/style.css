@@ -9,3 +9,15 @@
   background-color: #dff0d8;
   border-color: #d6e9c6;
 }
+
+form {
+  width: 400px;
+  height: 450px;
+  margin: auto;
+  position: relative;
+}
+
+
+h1 {
+  text-align: center;
+}
