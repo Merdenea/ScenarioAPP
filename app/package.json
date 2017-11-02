@@ -1,12 +1,12 @@
 {
-  "name": "nodekb",
-  "version": "1.0.0",
-  "description": "Simple knowledgebase app",
+  "name": "Data Logger",
+  "version": "0.1",
+  "description": "Cool data logger",
   "main": "app.js",
   "scripts": {
     "start": "node app"
   },
-  "author": "Brad Traversy",
+  "author": "Carlo Camurri",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
