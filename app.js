@@ -83,16 +83,25 @@ app.get('*', function(req, res, next){
   next();
 });
 
+
 // Home Route
 app.get('/', function(req, res){
   Data.find({}, function(err, datares){
     if(err){
       console.log(err);
     } else {
-      res.render('index', {
-        title:'Logs',
-        datares: datares
+      if (req.user){
+        res.render('index', {
+          title:'Logs',
+          datares: datares
+        });
+      }
+      else{
+        res.render('login',{
+          title: 'Home',
+          datares: datares
       });
+    }
     }
   });
 });
