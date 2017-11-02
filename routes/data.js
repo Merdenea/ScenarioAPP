@@ -88,18 +88,12 @@ router.delete('/:id', function(req, res){
   let query = {_id:req.params.id}
 
   Data.findById(req.params.id, function(err, data){
-   if(data.author == req.user._id){
-
-      res.status(500).send();
-    } else
-     {
       Data.remove(query, function(err){
         if(err){
           console.log(err);
         }
         res.send('Success');
       });
-    }
   });
 });
 
