@@ -1,11 +1,10 @@
-extends layout
+extends laaresyout
 
 block content
   h3= data.title
-  h5 Written by #{author}
   p= data.body
   hr
   if user
       a.btn.btn-default(href='/data/edit/'+data._id) Edit 
-      a.btn.btn-danger.delete-data(href='#',data-id=data._id) Delete
+      a.btn.btn-danger.delete-data(href='#',data-id = data._id) Delete
   
