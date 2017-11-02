@@ -9,7 +9,7 @@ let User = require('../models/user');
 // Add Route
 router.get('/add', ensureAuthenticated, function(req, res){
   res.render('add_data', { 
-    title:'Add Data'
+    title:'New Log'
   });
 });
 
@@ -24,7 +24,7 @@ router.post('/add', function(req, res){
 
   if(errors){
     res.render('add_data', {
-      title:'Add Data',
+      title:'New Log',
       errors:errors
     });
   } else {
@@ -38,7 +38,7 @@ router.post('/add', function(req, res){
         console.log(err);
         return;
       } else {
-        req.flash('success','Data Added');
+        req.flash('success','Log Added');
         res.redirect('/');
       }
     });
@@ -53,7 +53,7 @@ router.get('/edit/:id', ensureAuthenticated, function(req, res){
       res.redirect('/');
     }*/
     res.render('edit_data', {
-      title:'Edit Data',
+      title:'Edit Log',
       data: data
     });
   });
@@ -73,7 +73,7 @@ router.post('/edit/:id', function(req, res){
       console.log(err);
       return;
     } else {
-      req.flash('success', 'Data Updated');
+      req.flash('success', 'Log Updated');
       res.redirect('/');
     }
   });
