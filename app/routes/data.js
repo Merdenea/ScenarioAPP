@@ -86,7 +86,6 @@ router.post('/edit/:id', function(req, res){
   data.author = req.user._id;
   data.date = formatDate(new Date());
   data.body = req.body.body;
-  console.log(data);
   let query = {_id:req.params.id}
 
   Data.update(query, data, function(err){

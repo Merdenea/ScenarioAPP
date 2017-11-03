@@ -88,7 +88,6 @@ app.get('*', function (req, res, next) {
 app.get('/', function (req, res) {
   if (req.user) {
     Data.find({author: req.user._id}, function (err, datares) {
-      console.log(req.user);
       if (err) {
         console.log(err);
       } else {
