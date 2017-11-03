@@ -1,6 +1,6 @@
 {
-  "name": "Data Logger",
-  "version": "0.1",
+  "name": "DataLogger",
+  "version": "1.0.0",
   "description": "Cool data logger",
   "main": "app.js",
   "scripts": {

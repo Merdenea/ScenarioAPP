@@ -135,7 +135,8 @@ router.post('/search', function(req,res){
     });
   }
   else{
-    let query = {title: { $regex: '.*' + req.body.search + '.*', $options: 'i' }};
+    let query = {title: { $regex: '.*' + req.body.search + '.*', $options: 'i' },
+                 author: req.user._id};
     let caseSensitivity = {$caseSensitive: false};
     Data.find(query, caseSensitivity,function(err, results){
       res.render('index', {
